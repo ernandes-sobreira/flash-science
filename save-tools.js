@@ -208,6 +208,11 @@ if(heroActions){
  heroActions.appendChild(restoreButton);
  restoreButton.addEventListener('click',open);
 }
+// Atualize o contador depois de respostas, mudanças de etapa e reflexões.
+['answers','nextBtn','prevBtn','stages','beginBtn','reflection'].forEach(id=>{
+ const el=$(id);if(!el)return;
+ el.addEventListener(id==='reflection'?'input':'click',()=>window.setTimeout(updateStatus,0));
+});
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')updateStatus()});
 updateStatus();
 })();
