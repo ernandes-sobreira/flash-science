@@ -16,3 +16,5 @@ body{background:#fff;color:var(--ink);font-size:16px}
 @media(max-width:650px){.home h1{font-size:clamp(42px,10vw,57px)}.memory-form{padding:17px}.memory-fields{grid-template-columns:1fr}.photo-zone{min-height:200px}.day1-story h1{font-size:clamp(35px,9vw,51px)}.day1-story>p{font-size:16px}.day1-banner{flex-wrap:wrap}.day1-banner button{width:100%}.day1-actions .btn{width:100%}.day1-actions .quiet{flex:1}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
 @media print{.memory-form,.day1-ceremony,.day1-banner{display:none!important}}
+
+@media(max-width:650px){.nav{height:auto;min-height:69px;padding-top:10px;padding-bottom:10px;gap:8px}.navright{gap:5px}.navright .quiet{padding:8px 9px;font-size:12px}.mark{font-size:16px;letter-spacing:-.04em}.day1-button{margin-left:0}.day1-actions .quiet{font-size:12px;padding:10px 12px}}
