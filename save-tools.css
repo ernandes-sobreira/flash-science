@@ -1,0 +1,19 @@
+/* Controles de salvamento — identidade Chuva MT */
+.fs-save-nav{white-space:nowrap}
+.fs-save-strip{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:10px;margin:14px 0;padding:11px 12px;border:1px solid #dde6f0;border-radius:14px;background:#f5f8fc}
+.fs-save-info{font-size:12px;font-weight:600;color:#47617a;line-height:1.4}
+.fs-save-shortcuts{display:flex;gap:7px;flex-wrap:wrap}
+.fs-save-shortcuts .quiet{font-size:12px;min-height:36px;padding:7px 11px;border-radius:9px;background:#fff;color:#1c5cab}
+.fs-save-dialog{width:min(520px,calc(100vw - 24px));max-height:90vh;overflow-y:auto;border:1px solid #dde6f0;border-radius:22px;background:#fff;color:#12233a;box-shadow:0 25px 90px #10243b30;padding:26px}
+.fs-save-dialog::backdrop{background:#12233a70;backdrop-filter:blur(3px)}
+.fs-save-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:12px}
+.fs-save-top h2{font-family:'Sora',sans-serif;font-size:clamp(22px,4vw,29px);letter-spacing:-.04em;line-height:1.2;margin-top:7px}
+.fs-save-dialog .fs-close{padding:0;width:38px;height:38px;flex-shrink:0;font-size:26px;line-height:1;display:grid;place-items:center}
+.fs-save-description{font-size:15px;color:#465a70;line-height:1.55;margin:10px 0 18px}
+.fs-save-status{border:1px solid #dbe8f5;background:#f2f8ff;border-radius:12px;color:#275784;padding:13px;font-size:13px;font-weight:700;margin-bottom:16px}
+.fs-save-actions{display:flex;flex-direction:column;gap:10px}
+.fs-save-actions .btn,.fs-save-actions .quiet,.fs-restore-label{width:100%;min-height:48px;text-align:center;display:flex;justify-content:center;align-items:center;font-weight:700;border-radius:11px}
+.fs-save-actions .fs-restore-label{cursor:pointer;border:1px solid #dde6f0;background:#fff;color:#1c5cab;padding:10px 14px}
+.fs-save-note{font-size:12px;color:#7c8b9c;line-height:1.5;margin-top:18px}
+@media(max-width:650px){.fs-save-nav{font-size:12px;padding:7px 10px}.fs-save-strip{margin-top:12px}.fs-save-dialog{padding:20px}.fs-save-shortcuts{width:100%}.fs-save-shortcuts button{flex:1}.navright{gap:6px}}
+@media print{.fs-save-strip,.fs-save-nav,.fs-save-dialog,#fsResultBackup,#fsHomeRestore{display:none!important}}
