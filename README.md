@@ -12,6 +12,9 @@ Ativação: **Settings → Pages → Build and deployment → Deploy from a bran
 ## Recursos
 
 - 35 perguntas reflexivas distribuídas em cinco etapas, das motivações pessoais aos métodos científicos.
+- **140 alternativas específicas**, quatro para cada uma das 35 perguntas — não mais respostas genéricas idênticas.
+- **Resposta livre:** quem não se reconhecer nas quatro opções pode escrever com suas próprias palavras. Conta no progresso, mas fica fora da porcentagem (não se converte artificialmente em zero).
+- **Compatibilidade:** por terem mudado os significados das alternativas, escolhas feitas na versão anterior não são reaproveitadas como se fossem respostas novas. As antigas pontuações ficam guardadas localmente e as reflexões escritas são preservadas.
 - Microaulas no próprio aplicativo: ao responder inclusive “Ainda não sei”, aparece uma explicação e uma missão de aprendizagem.
 - Porcentagem de **preparação autodeclarada** por dimensão. Não é teste de aptidão validado nem previsão de aprovação.
 - Plano de tarefas, recomendações temáticas de programas e professores da UNEMAT, links institucionais, relatório em JSON e impressão/PDF.
