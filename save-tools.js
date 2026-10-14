@@ -24,7 +24,7 @@ const announce=(message)=>{
 const current=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'null')}catch(_){return null}};
 const validAnswer=v=>Number.isInteger(v)&&v>=0&&v<=3;
 const totalAnswers=s=>s&&s.answers&&typeof s.answers==='object'
- ? Object.entries(s.answers).filter(([i,a])=>/^(?:[0-9]|[12][0-9]|3[0-4])$/.test(i)&&validAnswer(a)).length:0;
+ ? new Set([...Object.entries(s.answers).filter(([i,a])=>/^(?:[0-9]|[12][0-9]|3[0-4])$/.test(i)&&validAnswer(a)).map(([i])=>i),...Object.entries(s.custom||{}).filter(([i,v])=>/^(?:[0-9]|[12][0-9]|3[0-4])$/.test(i)&&typeof v==='string'&&v.trim().length>=3).map(([i])=>i)]).size:0;
 function stamp(){
  try{const d=localStorage.getItem(SAVED_AT);if(!d)return 'Salvamento automático ativo';const date=new Date(d);return Number.isFinite(date.getTime())?'Último salvamento: '+date.toLocaleString('pt-BR',{dateStyle:'short',timeStyle:'short'}):'Salvamento automático ativo';}
  catch(_){return 'Armazenamento local indisponível'}
@@ -105,6 +105,7 @@ function cleanObject(obj,mode){
  for(const [k,v] of Object.entries(obj)){
   if(!/^(?:[0-9]|[12][0-9]|3[0-4])$/.test(k))continue;
   if(mode==='answers'&&validAnswer(v))out[k]=v;
+  else if(mode==='custom'&&typeof v==='string')out[k]=v.slice(0,1000);
   else if(mode==='notes'&&typeof v==='string')out[k]=v.slice(0,1000);
   else if(mode==='flags'&&typeof v==='boolean')out[k]=v;
  }
@@ -116,10 +117,11 @@ function normalize(s){
  const goals=['mestrado','doutorado','explorar'];
  const topics=['saude','ambiente','indigenas','educacao','clima','biodiversidade','agro','humanas','linguagem','tecnologia','matematica'];
  const safeTopics=Array.isArray(s.topics)?s.topics.filter(t=>topics.includes(t)).slice(0,3):[];
- const n=Object.keys(answers).length;
+ const custom=cleanObject(s.custom,'custom');
+ const n=Object.keys(answers).filter(k=>!Object.prototype.hasOwnProperty.call(custom,k)).length+Object.values(custom).filter(v=>v.trim().length>=3).length;
  return {goal:goals.includes(s.goal)?s.goal:'mestrado',topics:safeTopics,
   name:typeof s.name==='string'?s.name.slice(0,40):'',
-  answers:answers,notes:cleanObject(s.notes,'notes'),done:cleanObject(s.done,'flags'),
+  answers:answers,custom:custom,answerVersion:s.answerVersion===2?2:1,notes:cleanObject(s.notes,'notes'),done:cleanObject(s.done,'flags'),
   kept:cleanObject(s.kept,'flags'),
   index:Number.isInteger(s.index)?Math.max(0,Math.min(34,s.index)):0,
   screen:n===35&&s.screen==='result'?'result':n||s.started?'journey':'landing',
