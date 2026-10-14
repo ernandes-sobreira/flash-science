@@ -214,6 +214,7 @@ if(heroActions){
 ['answers','nextBtn','prevBtn','stages','beginBtn','reflection'].forEach(id=>{
  const el=$(id);if(!el)return;
  el.addEventListener(id==='reflection'?'input':'click',()=>window.setTimeout(updateStatus,0));
+ if(id==='answers')el.addEventListener('input',()=>window.setTimeout(updateStatus,0));
 });
 document.addEventListener('visibilitychange',()=>{if(document.visibilityState==='visible')updateStatus()});
 updateStatus();
